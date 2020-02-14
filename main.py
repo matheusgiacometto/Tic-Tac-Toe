@@ -10,41 +10,49 @@ def main():
 
     i = 0
     while (i < 9):
-        if (i % 2 == 0):
-            print()
-            print(player1 + '`s turn')
-            m = input('Linha: ')
-            n = input('Coluna: ')
-            print()
-            if (0 <= int(m) <= 2 and 0 <= int(n) <= 2):
-                if (jogo[int(m)][int(n)] == ' '):
-                    jogo[int(m)][int(n)] = 'x'
-                    print_table(jogo)
-                i += 1
-            else:
-                print('Choose a valid position')
+        while (i % 2 == 0):
+            try:
+                print('\n' + player1 + '`s turn')
+                m = int(input('Linha: '))
+                n = int(input('Coluna: '))
+                if 0 <= int(m) <= 2 and 0 <= int(n) <= 2:
+                    if (jogo[int(m)][int(n)] == ' '):
+                        jogo[int(m)][int(n)] = 'x'
+                        print_table(jogo)
+                        result = verify(jogo, player1, player2, i)
+                        if (result == 1 or result == 2):
+                            return 0
+                        else:
+                            i += 1
+                    else:
+                        print('\nChoose a blank position')
+                else:
+                    print('\nPlease enter a valid position')
+                    break
+            except:
+                print('\nInsert a number')
 
-
-        elif (i % 2 == 1):
-            print()
-            print(player2 + '`s turn')
-            m = input('Linha: ')
-            n = input('Coluna: ')
-            print()
-            if (0 <= int(m) <= 2 and 0 <= int(n) <= 2):
-                if (jogo[int(m)][int(n)] == ' '):
-                    jogo[int(m)][int(n)] = 'o'
-                    print_table(jogo)
-                    i += 1
-            else:
-                print('Choose a valid position')
-        else:
-            return 0
-
-        result = verify(jogo, player1, player2, i)
-        if (result == 1 or result == 2):
-            return 0
-
+        while (i % 2 == 1):
+            try:
+                print('\n' + player2 + '`s turn')
+                m = int(input('Linha: '))
+                n = int(input('Coluna: '))
+                if 0 <= int(m) <= 2 and 0 <= int(n) <= 2:
+                    if (jogo[int(m)][int(n)] == ' '):
+                        jogo[int(m)][int(n)] = 'o'
+                        print_table(jogo)
+                        result = verify(jogo, player1, player2, i)
+                        if (result == 1 or result == 2):
+                            return 0
+                        else:
+                            i += 1
+                    else:
+                        print('\nChoose a blank position')
+                else:
+                    print('\nPlease enter a valid position')
+                    break
+            except:
+                print('\nInsert a number')
 
 def print_table(jogo):
     print(' ' + jogo[0][0] + ' | ' + jogo[0][1] + ' | ' + jogo[0][2] + ' ')
