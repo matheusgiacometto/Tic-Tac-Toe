@@ -1,7 +1,10 @@
 def main():
-    print('Welcome to the Tic Tac Toe by Team 2')
+    print('Welcome to the Tic Tac Toe by Team 2\n')
 
-    print('Instruções\n')
+    print('Instructions:\n'
+          'First the players will have to insert their names.\n'
+          'Then, each player will have their turn to insert the position they want to put their mark\n'
+          'First the line, then the column, inserting only numbers from 0 to 2.\n')
 
     player1 = input('Please enter your name Player 1: ')
     player2 = input('Please enter your name Player 2: ')
